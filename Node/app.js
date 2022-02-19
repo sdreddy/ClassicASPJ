@@ -4,19 +4,19 @@ const bodyParser = require('body-parser')
 const app = express()
 app.get('/imangi', function(req, res){
    try{
- for(var prop in req.query){
-	 if (req.query.hasOwnProperty(prop)) {
-		res.write(prop);
-		res.write("=")
-		res.write(req.query[prop]);
-		res.write(";")
-		console.log(prop ,"=" , req.query[prop]);
-	}
-	}
+		res.write("Name "+req.query.name);
+		res.write("Phone "+req.query.phone);
+		res.write("Country "+req.query.country_code);
+		res.write("Text "+req.query.text);
+	if(req.query.name.length<1 || req.query.phone.length<1 || req.query.country_code.length<1 || req.query.text.length<1){
+	res.status(500).send("Wrong Request");
+}	else{
 	res.status(200).send();
+}
 	}
 catch(err){
-	res.status(501).send("Unable to Parse "+err);
+	console.log(err);
+	res.status(500).send("Unable to Parse "+err);
 }
 }); 
 
