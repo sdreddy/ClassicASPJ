@@ -14,6 +14,9 @@ text=pload.item("payload").item("text")
 
 
 Dim url
+
+'Add your URL which need to be called to the below variable
+
 url="http://localhost:8080/imangi?name=" & name & "&phone="&phone& "&country_code="&country_code& "&text="&text
 Dim xmlreq : Set xmlreq= Server.CreateObject("MSXML2.ServerXMLHTTP.3.0")
     xmlreq.open "GET",url , false
